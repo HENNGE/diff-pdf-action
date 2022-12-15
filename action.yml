@@ -23,7 +23,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://ghcr.io/nowsprinting/diff-pdf:latest'
+  image: 'Dockerfile'
   args:
     - "${{ inputs.options }}"
     - ${{ inputs.file1 }}
