@@ -31,5 +31,5 @@ RUN apt-get update \
 COPY --from=builder /diff-pdf/diff-pdf /usr/bin/
 COPY LICENSE README.md entrypoint.sh /
 
-ENTRYPOINT ["xvfb-run", "/entrypoint.sh"]
+ENTRYPOINT ["xvfb-run", "--auto-servernum", "/entrypoint.sh"]
 CMD ["--help"]
