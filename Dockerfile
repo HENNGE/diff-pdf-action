@@ -24,11 +24,15 @@ RUN apt-get update \
     libpoppler-glib8 \
     libwxgtk3.0-gtk3-0v5 \
     poppler-data \
+    xvfb \
   && apt-get -y clean \
   && rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /diff-pdf/diff-pdf /usr/bin/
 COPY LICENSE README.md entrypoint.sh /
+
+RUN Xvfb :99 &
+ENV DISPLAY=:99
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["--help"]
